@@ -8,6 +8,7 @@ In a folder of your choice, simply download and unzip the [project template](htt
 
 This will make sure that your project includes the latest version of the LabPal library (which will be placed in the `dep` subfolder).
 
+<a name="experiment"></a>
 ## Creating an experiment
 
 We first need to create an **experiment**. An experiment is an object that can take input *parameters*, can be *run*, and produces one or more output *values*. In LabPal, experiments all descend from the class [Experiment](/doc/ca/uqac/lif/labpal/Experiment.html). In our example:
@@ -47,7 +48,8 @@ class GnomeSort extends Experiment {
 
 The constructor receives a number, and sets its as an input parameter of the experiment with name "Array size". Method `execute` first reads the input parameter (the number), generates an array of random values of desired size, and then sorts this array using Gnome sort. This last bit of code is surrounded by two calls to get the current system time. Finally, the duration of the sort operation is written as an output data and is given the name "Time".
 
-### Creating a lab
+<a name="lab"></a>
+## Creating a lab
 
 We are now ready to create a **laboratory** ("lab" for short), which will be the environment in which many of these **experiments** will be run. In LabPal, a lab is a descendent of the [Laboratory](/doc/ca/uqac/lif/labpal/Laboratory.html) class. The template project already contains an empty laboratory called `MyLaboratory` (for the moment, don't change its name). Experiments can be created in a method called `setup`, and are added to the lab by a call to method `add`. Our lab could hence look like this:
 
@@ -68,6 +70,7 @@ class MyLaboratory extends Laboratory {
 
 This lab creates three instance of our GnomeSort experiment with three different array sizes, and adds them to the lab. The `main` method is only there so that our lab can be executable from the command line. Normally, all it requires is to call `initialize` with the command line arguments and the class of the current lab. You do not need to write anything else there.
 
+<a name="run"></a>
 ## Running the lab
 
 That's it! At the root of your project, simply type `ant`; this will compile your lab and produce a JAR file called `my-lab.jar`.
@@ -85,6 +88,7 @@ You should see something like this:
 
 This tells you that LabPal is started, and that you can use its web console by typing the URL `http://localhost:21212/index` in your web browser. From then on, you can use this console to control the execution of your experiments and see the results they produce. For more information, see [Using the web console](web-ui.html).
 
+<a name="table"></a>
 ## Adding a table
 
 So far, our lab contains three experiments, each of which computes and generates a single output data element, namely the duration of the sorting operation. These can be viewed by clicking on each of the experiments in the web console. Let us now collect these results and display them.
@@ -132,6 +136,7 @@ The table can be exported in various ways:
 - You can copy-paste its contents in your word processor; this should normally preserve its formatting.
 - In the *Tables* page, you can click on one of the icons to download the table as an HTML, plain-text (CSV) or LaTeX file you can include, for example, in a resarch paper you are writing.
 
+<a name="plot"></a>
 ## Adding a plot
 
 It is sometimes better to display data graphically, so let's new add a [Plot](/doc/ca/uqac/lif/labpal/plot/Plot.html) to our lab. A plot is always created with respect to an existing table. In our case, we would like to trace a line showing the sorting time with respect to the size of the array. The object we use for this is a [Scatterplot](/doc/ca/uqac/lif/labpal/plot/Scatterplot.html), to which we pass the table we created earlier:
@@ -149,6 +154,7 @@ If you recompile and restart the lab, you will now see a plot in the *Plots* pag
 
 As for tables, you can choose to save the plot as a PNG image (by clicking on it and using the *Save* menu in your browser), or to export it as a PDF file you can include e.g. in a paper you are writing.
 
+<a name="done"></a>
 ## Wrapping up
 
 Obviously, we don't need to create experiments one by one; we can use loops and other constructs to add them in batch to a lab. Instead of just three data points, we will use a loop to create 10 experiments with various array sizes.

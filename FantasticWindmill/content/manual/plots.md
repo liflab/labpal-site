@@ -1,12 +1,20 @@
 # Creating plots
 
-LabPal provides various ways of displaying the results of experiments graphically, using plots. The way of creating plots is generally this:
+LabPal provides various ways of displaying the results of experiments graphically, using plots. In this section, you will learn about:
+
+- [Plot types](#types)
+- [Plot libraries](#libraries)
+- [Customizing GRAL plots](#gral-custom)
+- [Palettes](#palettes)
+
+The way of creating plots is generally this:
 
 1. An experiment table is created and associated to experiments from the lab
 2. An instance of the [Plot](/doc/ca/uqac/lif/labpal/plot/Plot.html) object is created and given a table --along with an optional [TableTransformation](/doc/ca/uqac/lif/labpal/table/TableTransformation.html) to apply before plotting.
 
 The creation and transformation of tables is covered in its [own section](tables.html). Here we focus on the creation and customization of plots from existing tables.
 
+<a name="types"></a>
 ## Plot types
 
 Currently, LabPal supports the following types of plots:
@@ -15,6 +23,7 @@ Currently, LabPal supports the following types of plots:
 - [Pie charts](#piechart)
 - [Clustered bar plots](#clusteredhistogram)
 
+<a name="libraries"></a>
 ## Plot libraries
 
 LabPal uses two programs to generate plots.
@@ -24,6 +33,7 @@ LabPal uses two programs to generate plots.
 
 Some types of plots (such as scatterplots) are available in both "flavours"; others can only be created by one of the tools. For example, Gnuplot cannot create pie charts, while GRAL cannot create clustered bar plots.
 
+<a name="2d"></a>
 ## Two-dimensional plots
 
 Every two-dimensional plot has a few common methods that can be used to customize it:
@@ -67,6 +77,7 @@ TODO
 
 TODO
 
+<a name="gral-custom"></a>
 ## Customizing GRAL plots
 
 If these basic plot customization functions are not sufficient, it is possible to access to the complete GRAL library by directly manipulating the underlying Plot object. There are two ways of doing this.
@@ -102,6 +113,7 @@ add(plot);
 
 Once created, this plot can be managed by LabPal like any other plot.
 
+<a name="palettes"></a>
 ## Palettes
 
 The colours associated to each data series in a plot can be customized using a [Palette](/doc/ca/uqac/lif/labpal/plot/Palette.html). A palette is simply a map between numbers and colours; when drawing data series, a plot will use the first colour of the palette for the first series, the second colour for the second series, and so on. (If there are more series than colours in the palette, the palette index restarts from the beginning.)
