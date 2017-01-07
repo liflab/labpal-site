@@ -8,7 +8,6 @@ In this section, you will learn the following features:
 
 - [Typical usage of the web console](#usage)
 - [The elements of the web console](#elements)
-- [Saving and loading a lab](#save)
 - [Running a lab on a remote machine](#remote)
 - [Changing the server port](#port)
 
@@ -62,7 +61,7 @@ Below is a progress bar that shows:
 
 When experiments are running, you can refresh the page and the bar will update accordingly.
 
-Still below are two buttons that allow you to save and load the lab's state. This feature has [its own section](#save) below.
+Still below are two buttons that allow you to save and load the lab's state. This feature has [its own section](saving.html).
 
 Finally, the bottom part of the page gives some more information about the environment in which the lab is running: name and version of the operating system, etc.
 
@@ -158,10 +157,6 @@ One then simply has to `\include` the file at the beginning of the document, and
     \end{table}
 
 The advantage of doing this is that, if the lab is re-run, all the tables in the paper can be updated at the same time by simply replacing the old file by the new one.
-
-## <a name="save">Saving and loading a lab</a>
-
-TODO
 
 ## <a name="remote">Running a lab on a remote machine</a>
 

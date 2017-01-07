@@ -13,7 +13,6 @@ This manual is under construction. Please come back often.
 - [Using the web console](web-ui.html)
   - [Typical usage of the web console](web-ui.html#usage)
   - [The elements of the web console](web-ui.html#elements)
-  - [Saving and loading a lab](web-ui.html#save)
   - [Running a lab on a remote machine](web-ui.html#remote)
   - [Changing the server port](web-ui.html#port)
 - [Using the text console](text-ui.html)
@@ -32,6 +31,7 @@ This manual is under construction. Please come back often.
   - [Plot libraries](plots.html#libraries)
   - [Customizing GRAL plots](plots.html#gral-custom)
   - [Palettes](plots.html#palettes)
+- [Saving, loading, merging labs](saving.html)
 - [Adding metadata](metadata.html)
   - [To the lab](#lab)
   - [To each experiment group](#group)
@@ -41,6 +41,10 @@ This manual is under construction. Please come back often.
 - [Including external results](write-in.html)
   - [By hand](write-in.html#manual)
   - [Using WriteInExperiment](write-in.html#class)
+- [Other features](other.html)
+  - [Passing command-line parameters](other.html#cli)
+  - [Customizing the web console](other.html#custom-ui)
+  - [Checking the environment](other.html#environment)
 
 ## Other resources
 

@@ -357,7 +357,7 @@ Group g = new Group("Gnome Sort");
 add(g);
 GnomeSort exp = new GnomeSort(10);
 g.add(exp);
-<code>
+</code>
 </pre>
 
 As usual, don't forget to `add` the group to the lab.
