@@ -16,17 +16,16 @@ side by side in the same root folder, like this:
 In the `labpal-site`, go to the `FantasticWindmill` folder. To generate the
 HTML files from the sources, type
 
-    $ php fw/fw.php
-    $ make mirror
+    $ make
 
 This will put all the static web site in the `public_html` folder.
 
 To put the site "online", you need to copy the contents of this folder to the
 `docs` folder of the `labpal` repository. Run:
 
-    $ ./push-online.sh
+    $ make github
 
-This script will only work if the `labpal` repo is properly located relative
+This command will only work if the `labpal` repo is properly located relative
 to `labpal-site`, as mentioned above.
 
 ## How to modify the site

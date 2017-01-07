@@ -14,7 +14,7 @@ $heading1 = $page->dom->getElementsByTagName("h1")->item(0);
 if ($heading1)
 {
   $heading = $heading1->C14N();
-  $heading = preg_replace("/\\bh1\\b/", "h3", $heading);
+  $heading = preg_replace("/\\bh1\\b/", "h2", $heading);
   $heading1->parentNode->removeChild($heading1);
 }
 $content = demote_headers(get_inner_html($body));

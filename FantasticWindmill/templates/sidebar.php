@@ -5,7 +5,8 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
-    <p>LabPal is a library for running experiments on a computer and process their results.</p>
+  <img src="/images/labpal-175.png" alt="LabPal"/>
+  <p>LabPal is a library for running experiments on a computer and process their results.</p>
   </div>
 
   <nav class="sidebar-nav">

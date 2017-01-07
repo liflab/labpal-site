@@ -1,3 +1,5 @@
+[User Manual](index.html)
+
 # Creating and transforming tables
 
 TODO

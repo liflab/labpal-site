@@ -1,3 +1,5 @@
+[User Manual](index.html)
+
 # A quick tutorial
 
 Let us measure empirically how long it takes to sort an array using the [Gnome Sort](https://en.wikipedia.org/wiki/Gnome_sort) algorithm for various array sizes. We will use LabPal to prepare a set of experiments that will do this.

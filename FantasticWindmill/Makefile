@@ -24,6 +24,7 @@ FWOPTS=--incremental --verbosity 0
 BASEDIR=$(PWD)
 INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/public_html
+ONLINEDIR=../../labpal/docs
 
 ## -----------------
 ## FTP settings
@@ -59,12 +60,15 @@ DROPBOX_DIR=~/Dropbox/Public/
 ## Make targets
 ## -----------------
 
+all: html mirror
+
 help:
 	@echo 'Makefile for a Fantastic Windmill Web site                                        '
 	@echo '                                                                       '
 	@echo 'Usage:                                                                 '
 	@echo '   make html                        (re)generate the web site          '
 	@echo '   make publish                     generate using production settings '
+	@echo '   make all                         html + publish                     '
 	@echo '   make mirror                      mirror all files to output dir     '
 	@echo '   make clean                       remove the generated files         '
 	@echo '   ssh_upload                       upload the web site via SSH        '
@@ -83,7 +87,6 @@ html: template_local
 # documents that refer to them (instead of using the static/ directory)
 mirror: 
 	rsync -av --exclude='*.md' --exclude="*.yaml" --exclude='*.rst' --exclude='*~' --exclude='*.src' $(INPUTDIR)/ $(OUTPUTDIR)
-	#rsync --exclude-from rsync-excludes.txt --delete -az $(INPUTDIR)/ $(OUTPUTDIR)
 
 clean:
 	find $(OUTPUTDIR) -mindepth 1 -delete
@@ -104,8 +107,7 @@ ftp_upload:
 	lftp 'ftp://$(FTP_USER):$(FTP_PASSWORD)@$(FTP_HOST)' -e "mirror -R $(OUTPUTDIR) $(FTP_TARGET_DIR) ; quit"
 
 github: 
-	ghp-import $(OUTPUTDIR)
-	git push origin gh-pages
+	rsync --exclude-from rsync-excludes.txt --delete -az $(OUTPUTDIR)/ $(ONLINEDIR)
 
 template_local:
 	cp $(BASEDIR)/templates/template_local.php $(BASEDIR)/templates/template_code.php

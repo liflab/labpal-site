@@ -18,6 +18,7 @@ include_once("user-defined.php");
   <link rel="stylesheet" href="/css/syntax.css">
   <link rel="stylesheet" href="/css/lanyon.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" href="/css/custom.css">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-precomposed.png">

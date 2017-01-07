@@ -1,3 +1,5 @@
+[User Manual](index.html)
+
 # Creating plots
 
 LabPal provides various ways of displaying the results of experiments graphically, using plots. In this section, you will learn about:
@@ -14,8 +16,7 @@ The way of creating plots is generally this:
 
 The creation and transformation of tables is covered in its [own section](tables.html). Here we focus on the creation and customization of plots from existing tables.
 
-<a name="types"></a>
-## Plot types
+## <a name="types">Plot types</a>
 
 Currently, LabPal supports the following types of plots:
 
@@ -23,8 +24,7 @@ Currently, LabPal supports the following types of plots:
 - [Pie charts](#piechart)
 - [Clustered bar plots](#clusteredhistogram)
 
-<a name="libraries"></a>
-## Plot libraries
+## <a name="libraries">Plot libraries</a>
 
 LabPal uses two programs to generate plots.
 
@@ -33,8 +33,7 @@ LabPal uses two programs to generate plots.
 
 Some types of plots (such as scatterplots) are available in both "flavours"; others can only be created by one of the tools. For example, Gnuplot cannot create pie charts, while GRAL cannot create clustered bar plots.
 
-<a name="2d"></a>
-## Two-dimensional plots
+## <a name="2d">Two-dimensional plots</a>
 
 Every two-dimensional plot has a few common methods that can be used to customize it:
 
@@ -62,10 +61,10 @@ will generate a plot with the points (0,1), (1,2), (2,3) painted in one color (c
 
 A scatterplot is created like this:
 
-<pre><code>
-Table t = ...
+<pre><code>Table t = ...
 ca.uqac.lif.labpal.plot.Scatterplot plot = new Scatterplot(t);
-</code></pre>
+</code>
+</pre>
 
 The first occurrence of `Scatterplot` refers to the *interface*, while the second occurrence refers to a specific implementation of this interface. Normally, this is either `ca.uqac.lif.labpal.gral.Scatterplot` to use the GRAL version, or `ca.uqac.lif.labpal.gnuplot.Scatterplot` for the Gnuplot version.
 
@@ -77,8 +76,7 @@ TODO
 
 TODO
 
-<a name="gral-custom"></a>
-## Customizing GRAL plots
+## <a name="gral-custom">Customizing GRAL plots</a>
 
 If these basic plot customization functions are not sufficient, it is possible to access to the complete GRAL library by directly manipulating the underlying Plot object. There are two ways of doing this.
 
@@ -86,21 +84,20 @@ If these basic plot customization functions are not sufficient, it is possible t
 
 If the basic plot is correct, but one wishes simply to perform some "touching up", a simple way is to override the `customize` method. For example, the Scatterplot class does not provide a way of changing the border width of the plot; however, this can be done by overriding `customize` and setting it using GRAL primitives:
 
-<pre><code>
-Table t = ...
+<pre><code>Table t = ...
 ca.uqac.lif.labpal.plot.Scatterplot plot = new Scatterplot(t) {
   public void customize(de.erichseifert.gral.plots.Plot plot) {
     plot.setInsets(new Insets2D.Double(20d, 60d, 60d, 40d));
   }
 }
-</code></pre>
+</code>
+</pre>
 
 ### Heavier customization
 
 For heavier customization, or to create a plot that GRAL supports but for which there exists no corresponding LabPal object, one can simply create a class that extends [GralPlot](/doc/ca/uqac/lif/labpal/plot/gral/GralPlot.html), and implement the `getPlot` method. This allows the user to create and setup any plot provided by GRAL and associate it with a DataSource corresponding to the table being passed to the plot. For example, the following code creates a GRAL RasterPlot object and changes the font used for displaying it.
 
-<pre><code>
-GralPlot plot = new GralPlot(t) {
+<pre><code>GralPlot plot = new GralPlot(t) {
   public de.erichseifert.gral.plots.Plot getPlot(DataSource source) {
     DataSource rasterdata = RasterPlot.createRasterData(source);
     RasterPlot p = new RasterPlot(rasterdata);
@@ -109,12 +106,12 @@ GralPlot plot = new GralPlot(t) {
   }
 }
 add(plot);
-</code></pre>
+</code>
+</pre>
 
 Once created, this plot can be managed by LabPal like any other plot.
 
-<a name="palettes"></a>
-## Palettes
+## <a name="palettes">Palettes</a>
 
 The colours associated to each data series in a plot can be customized using a [Palette](/doc/ca/uqac/lif/labpal/plot/Palette.html). A palette is simply a map between numbers and colours; when drawing data series, a plot will use the first colour of the palette for the first series, the second colour for the second series, and so on. (If there are more series than colours in the palette, the palette index restarts from the beginning.)
 
