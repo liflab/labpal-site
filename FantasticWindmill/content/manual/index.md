@@ -1,7 +1,5 @@
 # LabPal User Manual
 
-This manual is under construction. Please come back often.
-
 ## Table of Contents
 
 - [A quick tutorial](quick-tutorial.html)
@@ -31,6 +29,9 @@ This manual is under construction. Please come back often.
   - [Plot libraries](plots.html#libraries)
   - [Customizing GRAL plots](plots.html#gral-custom)
   - [Palettes](plots.html#palettes)
+- [Managing files](files.html)
+  - [Using the FileHelper](files.html#filehelper)
+  - [Bundling external resources](files.html#bundle)
 - [Saving, loading, merging labs](saving.html)
 - [Adding metadata](metadata.html)
   - [To the lab](#lab)

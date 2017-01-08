@@ -24,8 +24,7 @@ To run experiments on a computer, you probably already write command-line script
 
 LabPal is easy enough to use that you can get up and running in a couple of minutes. Below is a minimal, but **complete** set of experiments for LabPal in less than 30 lines of code:
 
-<pre><code>  
-class MyLaboratory extends Laboratory {
+<pre><code>class MyLaboratory extends Laboratory {
 
   public void setup() {
     ExperimentTable t = new ExperimentTable("Number", "Time");
@@ -52,7 +51,8 @@ class MyLaboratory extends Laboratory {
     initialize(args, MyLaboratory.class);
   }
 }
-</code></pre>
+</code>
+</pre>
 
 In a nutshell:
 

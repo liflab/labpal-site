@@ -8,7 +8,7 @@ LabPal provides a convenient way to include existing results and process them si
 
 ## <a name="manual">By hand</a>
 
-This could be done by hand. For example, suppose you found this table that advertises sorting times for a (fictional) new algorithm called the "Blabla Sort":
+This can be done by hand. For example, suppose you found this table that advertises sorting times for a (fictional) new algorithm called the "Blabla Sort":
 
 <table border="1">
 <tr><th>Array size</th><th>Time (ms)</th></tr>
@@ -20,12 +20,13 @@ You would like to plot these results along with the ones computed by your existi
 
 <pre><code>public class BlablaSort extends Experiment {
   public BlablaSort(int size, int time) {
+    setInput("Algorithm", "Blabla Sort");
     setInput("Size", size);
     write("Time", time);
     setStatus(Status.DONE);
   }
   
-  public void run() {
+  public void execute() {
   }
 }
 </code>
@@ -35,8 +36,65 @@ Note how this experiment "hard-codes" its output parameter "Time" directly from 
 
 From this point on, instances of BlablaSort can be added to SortingLab, included into tables and plots, like any other experiment.
 
-## <a name="class">Using WriteInExperiment</a>
+## <a name="file">Automatically from a file</a>
 
-TODO
+A more systematic way of creating "pre-executed" experiments is to use the [ExperimentBuilder](/doc/ca/uqac/lif/labpal/ExperimentBuilder.html). First, instead of hard-coding the data in the lab's setup method, let us move it into a text file called `blabla.txt`:
+
+<pre>
+# Sorting times for BlaBla Sort
+# Fetched from the following paper: ...
+
+Size*   Time
+---------------------
+1000    14
+2000    24
+</pre>
+
+Let us now change the class BlablaSort so that it implements the interface `CloneableExperiment`. A cloneable experiment must implement a method called `newExperiment`, which is expected to return a new, empty instance of this class.
+
+<pre><code>public class BlablaSort extends Experiment implements CloneableExperiment&lt;BlablaSort&gt; {
+  public class BlablaSort() {
+    setInput("Algorithm", "Blabla Sort");
+    setStatus(Status.DONE);
+  }
+  public void execute() {
+  }
+  public BlablaSort newExperiment() {
+    return new BlablaSort();
+  }
+}
+</code>
+</pre>
+
+We are now ready to use the `ExperimentBuilder` to automatically create instances of `BlablaSort` by filling their data from the contents of the text file. In our lab:
+
+<pre><code>
+public void setup() {
+  ExperimentBuilder&lt;BlablaSort&gt; builder = new ExperimentBuilder&lt;BlablaSort&gt;();
+  Scanner scanner = new Scanner(FileHelper.internalFileToStream(this.getClass(), "blabla.txt"));
+  try {
+    Set&lt;BlablaSort&gt; experiments = builder.buildExperiment(new BlablaSort(), scanner);
+  } catch (ParseException e) {
+  }
+  ...
+}
+</code>
+</pre>
+
+Let us examine what this code does:
+
+- The first line creates a new ExperimentBuilder, which will create instances of experiments of class BlablaSort
+- The second line opens a scanner to the text file we created
+- The third line passes this scanner and an empty instance of BlablaSort to the builder. In response, the builder returns a set of **two** BlablaSort experiments. These experiments can then be manipulated like all the others: added to the lab, to a table, etc. (An exception is thrown if the file is incorrectly formatted.)
+
+Where do these two experiments come from? They have been instantiated from the contents of `blabla.txt`.
+
+- Blank lines, lines that start with "#" and "----" are ignored
+- The first non-ignored line is expected to contain a tab-separated list of parameter names
+- All remaining non-ignored lines are interpreted as parameter values for one new experiment instance. For example, line "1000  14" will produce a new BlablaSort experiment with parameter "Size" set to 1000, and parameter "Time" set to 14.
+
+Since BlablaSort "simulates" sorting by an algorithm, "Size" should be interpreted as an *input* parameter, while "Time" is rather an output parameter. This distinction can be made in the text file by putting a star at the end of input parameter names.
+
+As we have seen, a possible use of the ExperimentBuilder is to include experiments made from existing results fetched from some external source (research paper, database). In such a case, the `execute` method of the experiment is empty. However, the ExperimentBuilder can be used to instantiate any experiment, including experiments that need to be run. For example, one can use a text file to define the set of input parameters to be given to experiments, instead of creating them manually in the lab's `setup` method.
 
 <!-- :wrap=soft:mode=markdown: -->
