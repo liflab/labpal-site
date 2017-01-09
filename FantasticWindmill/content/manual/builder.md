@@ -70,10 +70,10 @@ We are now ready to use the `ExperimentBuilder` to automatically create instance
 
 <pre><code>
 public void setup() {
-  ExperimentBuilder&lt;BlablaSort&gt; builder = new ExperimentBuilder&lt;BlablaSort&gt;();
+  ExperimentBuilder&lt;BlablaSort&gt; builder = new ExperimentBuilder&lt;BlablaSort&gt;(new BlablaSort());
   Scanner scanner = new Scanner(FileHelper.internalFileToStream(this.getClass(), "blabla.txt"));
   try {
-    Set&lt;BlablaSort&gt; experiments = builder.buildExperiment(new BlablaSort(), scanner);
+    Set&lt;BlablaSort&gt; experiments = builder.buildExperiments(scanner);
   } catch (ParseException e) {
   }
   ...
@@ -85,7 +85,7 @@ Let us examine what this code does:
 
 - The first line creates a new ExperimentBuilder, which will create instances of experiments of class BlablaSort
 - The second line opens a scanner to the text file we created
-- The third line passes this scanner and an empty instance of BlablaSort to the builder. In response, the builder returns a set of **two** BlablaSort experiments. These experiments can then be manipulated like all the others: added to the lab, to a table, etc. (An exception is thrown if the file is incorrectly formatted.)
+- The third line passes this scanner to the builder. In response, the builder returns a set of **two** BlablaSort experiments. These experiments can then be manipulated like all the others: added to the lab, to a table, etc. (An exception is thrown if the file is incorrectly formatted.)
 
 Where do these two experiments come from? They have been instantiated from the contents of `blabla.txt`.
 
