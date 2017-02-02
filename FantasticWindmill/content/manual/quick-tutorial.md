@@ -21,8 +21,7 @@ We first need to create an **experiment**. An experiment is an object that can t
 
 Therefore, a sensible way to create our experiment would be to write this:
 
-<pre><code>
-class GnomeSort extends Experiment {
+<pre><code>class GnomeSort extends Experiment {
 
   public GnomeSort(int n) {
     setInput("Size", n);
@@ -45,8 +44,8 @@ class GnomeSort extends Experiment {
     long end = System.currentTimeMillis();
     write("Time", end - start);
   }
-}
-</code></pre>
+}</code>
+</pre>
 
 The constructor receives a number, and sets its as an input parameter of the experiment with name "Array size". Method `execute` first reads the input parameter (the number), generates an array of random values of desired size, and then sorts this array using Gnome sort. This last bit of code is surrounded by two calls to get the current system time. Finally, the duration of the sort operation is written as an output data and is given the name "Time".
 
@@ -55,8 +54,7 @@ The constructor receives a number, and sets its as an input parameter of the exp
 
 We are now ready to create a **laboratory** ("lab" for short), which will be the environment in which many of these **experiments** will be run. In LabPal, a lab is a descendent of the [Laboratory](/doc/ca/uqac/lif/labpal/Laboratory.html) class. The template project already contains an empty laboratory called `MyLaboratory` (for the moment, don't change its name). Experiments can be created in a method called `setup`, and are added to the lab by a call to method `add`. Our lab could hence look like this:
 
-<pre><code>
-class MyLaboratory extends Laboratory {
+<pre><code>class MyLaboratory extends Laboratory {
 
   public void setup() {
     add(new GnomeSort(10));
@@ -68,7 +66,8 @@ class MyLaboratory extends Laboratory {
     initialize(args, SortingLab.class);
   }
 }
-</code></pre>
+</code>
+</pre>
 
 This lab creates three instance of our GnomeSort experiment with three different array sizes, and adds them to the lab. The `main` method is only there so that our lab can be executable from the command line. Normally, all it requires is to call `initialize` with the command line arguments and the class of the current lab. You do not need to write anything else there.
 
@@ -83,10 +82,11 @@ This JAR is runnable and stand-alone: you can move it around without needing to 
 
 You should see something like this:
 
-    LabPal v2.5
+    LabPal v2.7
     (C) 2014-2017 Laboratoire d'informatique formelle
     Université du Québec à Chicoutimi, Canada
     Visit http://localhost:21212/index in your browser
+    Hit Ctrl+C in this window to stop
 
 This tells you that LabPal is started, and that you can use its web console by typing the URL `http://localhost:21212/index` in your web browser. From then on, you can use this console to control the execution of your experiments and see the results they produce. For more information, see [Using the web console](web-ui.html).
 
@@ -97,10 +97,10 @@ So far, our lab contains three experiments, each of which computes and generates
 
 To do so, we need to create a [Table](/doc/ca/uqac/lif/labpal/table/Table.html). A table is a collection of *table entries*, each of which is a set of key-value pairs. We would like to create a table from the results produced by our experiments: each entry should contain the *Size* of the array and the *Time* it took to sort it. This is done by creating a new [ExperimentTable](/doc/ca/uqac/lif/labpal/table/ExperimentTable.html) --that is, a table whose content is fetched from the data produced by one or more experiments. (In contrast, a [DataTable](/doc/ca/uqac/lif/labpal/table/DataTable.html) is a table made of hard values that you enter by yourself.) We create the table by telling it the names of the parameters we wish to fetch from the experiments:
 
-<pre><code>
-ExperimentTable t = new ExperimentTable("Size", "Duration");
+<pre><code>ExperimentTable t = new ExperimentTable("Size", "Duration");
 add(t);
-</code></pre>
+</code>
+</pre>
 
 If we want the table to show up in the lab console, we must also add it to the lab by calling `add`. Once the table is created, experiments must be added to it. We can do this in two ways:
 
@@ -110,15 +110,15 @@ If we want the table to show up in the lab console, we must also add it to the l
 
 Let us use the second technique. Our `setup` method will now look like this:
 
-<pre><code>
-public void setup() {
+<pre><code>public void setup() {
   ExperimentTable t = new ExperimentTable("Size", "Duration");
   add(t);
   add(new GnomeSort(10), t);
   add(new GnomeSort(100), t);
   add(new GnomeSort(1000), t);
 }
-</code></pre>
+</code>
+</pre>
 
 If you recompile and run this new lab, you will now see that a table shows up in the *Tables* page in the web console, with the name "Table 1". Clicking on it will show something like this:
 
@@ -143,10 +143,10 @@ The table can be exported in various ways:
 
 It is sometimes better to display data graphically, so let's new add a [Plot](/doc/ca/uqac/lif/labpal/plot/Plot.html) to our lab. A plot is always created with respect to an existing table. In our case, we would like to trace a line showing the sorting time with respect to the size of the array. The object we use for this is a [Scatterplot](/doc/ca/uqac/lif/labpal/plot/Scatterplot.html), to which we pass the table we created earlier:
 
-<pre><code>
-Scatterplot plot = new Scatterplot(t);
+<pre><code>Scatterplot plot = new Scatterplot(t);
 add(plot);
-</code></pre>
+</code>
+</pre>
 
 Again, don't forget to `add` the plot to the lab, or it won't show up in the console.
 
@@ -163,8 +163,7 @@ Obviously, we don't need to create experiments one by one; we can use loops and 
 
 Let us look at our `setup` method one last time:
 
-<pre><code>
-public void setup() {
+<pre><code>public void setup() {
   // Create table
   ExperimentTable t = new ExperimentTable("Size", "Duration");
   add(t);
@@ -176,7 +175,8 @@ public void setup() {
   Scatterplot plot = new Scatterplot(t);
   add(plot);
 }
-</code></pre>
+</code>
+</pre>
 
 All done! We now have a basic running laboratory with:
 
@@ -195,6 +195,7 @@ In this quick tutorial, we've barely scratched the surface of what you can do wi
 - Create, process and manage [tables](tables.html)
 - Document your lab for an external user by [adding metadata](metadata.html) to your experiments and their parameters
 - Create [more complex experiments](experiments.html) that can generate auxiliary files, update a progress indicator, produce error messages, etc.
+- Learn about [provenance](provenance.html) and traceability for your data
 
 
 <!-- :wrap=soft:mode=markdown: -->

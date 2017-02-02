@@ -1,5 +1,11 @@
 # LabPal User Manual
 
+This is the table of contents of the LabPal user manual. In addition to this manual, you may want to consult other resources:
+
+- The [LabPal API documentation](../doc)
+- The [code examples](https://github.com/liflab/labpal/tree/master/Source/Examples/src) used throughout this site
+- The [YouTube playlist](https://www.youtube.com/playlist?list=PL_hZ2Z4_Mqpin4Dd9Y9GRheLAlw23gGRf) showing various videos highlighting functionalities of LabPal
+
 ## Table of Contents
 
 - [A quick tutorial](quick-tutorial.html)
@@ -9,6 +15,7 @@
   - [Adding a plot](quick-tutorial.html#plot)
   - [Wrapping up](quick-tutorial.html#done)
 - [Using the web console](web-ui.html)
+  - [A video tutorial](web-ui.html#video)
   - [Typical usage of the web console](web-ui.html#usage)
   - [The elements of the web console](web-ui.html#elements)
   - [Running a lab on a remote machine](web-ui.html#remote)
@@ -42,12 +49,8 @@
 - [Including external results](builder.html)
   - [By hand](builder.html#manual)
   - [Automatically from a file](builder.html#class)
+- [Data Provenance and Traceability](provenance.html)
 - [Other features](other.html)
   - [Passing command-line parameters](other.html#cli)
   - [Customizing the web console](other.html#custom-ui)
   - [Checking the environment](other.html#environment)
-
-## Other resources
-
-- [LabPal API documentation](../doc)
-- [Code Examples](https://github.com/liflab/labpal/tree/master/Source/Examples/src)

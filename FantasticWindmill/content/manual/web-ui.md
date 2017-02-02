@@ -6,10 +6,17 @@ The preferred way of controlling the execution of experiments in LabPal is throu
 
 In this section, you will learn the following features:
 
+- [A video tutorial](#video)
 - [Typical usage of the web console](#usage)
 - [The elements of the web console](#elements)
 - [Running a lab on a remote machine](#remote)
 - [Changing the server port](#port)
+
+## <a name="usage">Typical usage of the web console</a>
+
+A picture is worth a thousand words; here is a video showing the main features of the web console.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5uL7i6SytyM" frameborder="0" allowfullscreen></iframe>
 
 ## <a name="usage">Typical usage of the web console</a>
 

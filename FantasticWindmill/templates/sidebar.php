@@ -12,10 +12,11 @@
   <nav class="sidebar-nav">
     <a class="sidebar-nav-item" href="/">Home</a>
     <a class="sidebar-nav-item" href="/manual/quick-tutorial.html">Quick tutorial</a>
+    <a class="sidebar-nav-item" href="/videos.html">Videos</a>
     <a class="sidebar-nav-item" href="/manual/index.html">User manual</a>
     <a class="sidebar-nav-item" href="https://github.com/liflab/labpal/releases/latest">Download</a>
     <a class="sidebar-nav-item" href="https://github.com/liflab/labpal">GitHub project</a>
-    <span class="sidebar-nav-item">Currently v2.5</span>
+    <span class="sidebar-nav-item">Currently v2.7</span>
   </nav>
 
   <div class="sidebar-item">
