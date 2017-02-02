@@ -28,7 +28,8 @@ LabPal is easy enough to use that you can get up and running in a couple of minu
 
   public void setup() {
     ExperimentTable t = new ExperimentTable("Number", "Time");
-    for (long n : new long[]{22602052667l, 42602051897l, 63612552733l, 84612554431l})
+    for (long n : new long[]{22602052667l, 42602051897l,
+      63612552733l, 84612554431l})
       add(new MyExperiment(n), t);
     add(t).add(new Scatterplot(t));
   }
