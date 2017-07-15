@@ -70,11 +70,17 @@ This way, one cannot start an experiment intended to run on another lab instance
 
 ### Creating custom filters
 
+Filtering by experiment IDs is not always an appropriate way of selecting experiments. After all, IDs are simple numerical identifiers, and experiments with successive IDs are not necessarily related in any meaningful way. If you wish to pick, say, all experiments whose input parameter `a` is equal to 1 or 2, you may have a hard time doing that by choosing their IDs.
 
+The default filter provided by LabPal can be overridden by a filter of your creation. To this end, it suffices to override method [`createFilter`](doc/ca/uqac/lif/labpal/Laboratory.html#createFilter-java.lang.String-) to return an [`ExperimentFilter`](doc/ca/uqac/lif/labpal/ExperimentFilter.html) object. An experiment filter must implement only one method, called `include()`, which, given an experiment, returns true or false, depending on whether this experiment should be selected or not.
+
+The whole point of filtering is to have different lab instances select different experiments depending on some external parameter. The default filter uses a string passed from the command line to decide what experiments to select, and your own filter can do the same. Method `createFilter`, when called, is passed a String object, which is precisely the string obtained from the command line through the `--filter` parameter. It is up to you to do something of that string when you instantiate your filter.
+
+The [LabPal source repository](https://liflab.github.io/labpal), in the `Source/Examples/filtering` folder, shows an example of a custom filter.
 
 ## Auto-start
 
-The last piece of the puzzle is the ability to start the execution of experiments without user intervention. This is done with the `--autostart` command line option. This option will launch the lab, and directly send all experiments to the lab assistant, and start the assistant. However, if a filter has been defined, only the experiments selected by the filter will be queued.
+The last piece of the puzzle is the ability to start the execution of experiments without user intervention. This is done with the `--autostart` command line option. This option will launch the lab, directly send all experiments to the lab assistant's queue, and start the assistant. However, if a filter has been defined, only the experiments selected by the filter will be queued.
 
 To recap, consider the following command line:
 
