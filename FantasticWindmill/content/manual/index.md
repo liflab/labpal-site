@@ -54,6 +54,7 @@ This is the table of contents of the LabPal user manual. In addition to this man
 - [Including external results](builder.html)
   - [By hand](builder.html#manual)
   - [Automatically from a file](builder.html#class)
+- [Running LabPal on multiple machines](multiple-machines.html)
 - [Data Provenance and Traceability](provenance.html)
 - [Other features](other.html)
   - [Passing command-line parameters](other.html#cli)
