@@ -14,11 +14,12 @@ include_once("user-defined.php");
   <title><?php echo $page->data["title"]; ?> - <?php echo $page->data["site"]["name"]; ?></title>
   
   <!-- CSS -->
-  <link rel="stylesheet" href="/css/poole.css">
-  <link rel="stylesheet" href="/css/syntax.css">
-  <link rel="stylesheet" href="/css/lanyon.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-  <link rel="stylesheet" href="/css/custom.css">
+  <link rel="stylesheet" media="screen" href="/css/poole.css">
+  <link rel="stylesheet" media="screen,print" href="/css/syntax.css">
+  <link rel="stylesheet" media="screen" href="/css/lanyon.css">
+  <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+  <link rel="stylesheet" media="screen" href="/css/custom.css">
+  <link rel="stylesheet" media="print" href="/css/print.css">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-precomposed.png">

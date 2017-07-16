@@ -8,7 +8,7 @@ We also described how the save/resume feature of LabPal can be used to run diffe
 
 However, so far, this process is done by hand. You need to manually start multiple lab instances, manually pick the experiments to run on each, and manually download and merge their respective save files (the merging is actually automatic, but you have to invoke it yourself). This process can be automated further, using the features described in this section.
 
-## Auto-reporting
+## <a name="auto-reporting">Auto-reporting</a>
 
 A first useful feature is called *auto-reporting*. Rather than manually download a save file on a machine B, and merge it to the contents on some machine A, one can instruct the lab on machine B to report its results directly to the lab running on machine A, using the HTTP protocol.
 
@@ -24,7 +24,7 @@ This reporting can extend to multiple machines. The following configurations are
 
 - Multiple labs all report to a single instance A.
 - Lab C reports to B, which in turn reports to A. In this case, B's updates to A will also contain C's updates to B.
-- Labs A and B report to each other. This can be used to achieve synchronization between the two lab (provided they each run different sets of experiments).
+- Labs A and B report to each other. This can be used to achieve synchronization between the two labs (provided they each run different subsets of experiments).
 
 The periodical reporting is done only when the lab assistant is running. When the lab is not running, no new results are generated, and hence there is no point in repeatedly contacting the other lab when nothing changes. The only exception is when experiments are added or removed from the lab assistant's queue; in that case, an update will be sent immediately, whether the lab is running or not. This makes it possible for lab A to know what experiments are waiting in the queue of some assistant elsewhere.
 
@@ -34,7 +34,7 @@ When auto-reporting is enabled on machine B, the state of experiments can be vie
 
 - An experiment that is queued on machine B will appear on A as "Queued remotely".
 - An experiment that is running on machine B will appear on A as "Running remotely".
-- An experiment that is finished looks exactly the same, irrespective of where it was run. However, one can still distinguish experiments by giving a different name to the lab assistant on each machine (using the command line parameter `--name`. Each experiment contains the "Run by" metadata element, which contains the name of the lab assistant that executed it.
+- An experiment that is finished looks exactly the same, irrespective of where it was run. However, one can still distinguish experiments by giving a different name to the lab assistant on each machine (using the command line parameter `--name`). Each experiment contains the "Run by" metadata element, which contains the name of the lab assistant that executed it.
 
 The "remote" experiments have an "R" next to their status icon in the experiment list. This way, one can easily see what experiments are being queued or are running on other machines, and select *different* experiments to run locally. 
 
@@ -50,7 +50,7 @@ It is recommended to use an interval that is not too short, especially if the la
 
 If the `--report-to` argument is used, the *Status* page will display an additional section with information about the reporting of results. If errors occur when attempting to contact the remote lab, they will be displayed there. Also, the section contains a button *Reports results now*; clicking on this button forces a sending of the results immediately, irrepective of the timer for the next update.
 
-## Filtering
+## <a name="filtering">Filtering</a>
 
 Auto-reporting automates the task of sending and merging experimental results to a central location. The next feature, filtering, makes it possible to programmatically assign different sets of experiments to each lab instance.
 
@@ -78,7 +78,7 @@ The whole point of filtering is to have different lab instances select different
 
 The [LabPal source repository](https://liflab.github.io/labpal), in the `Source/Examples/filtering` folder, shows an example of a custom filter.
 
-## Auto-start
+## <a name="auto-start">Auto-start</a>
 
 The last piece of the puzzle is the ability to start the execution of experiments without user intervention. This is done with the `--autostart` command line option. This option will launch the lab, directly send all experiments to the lab assistant's queue, and start the assistant. However, if a filter has been defined, only the experiments selected by the filter will be queued.
 
