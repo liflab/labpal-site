@@ -44,6 +44,7 @@ This is the table of contents of the LabPal user manual. In addition to this man
   - [Load a lab](saving.html#loading)
   - [Merge labs](saving.html#merging)
   - [Preload a lab with results stored internally](saving.html#preloading)
+  - [Export a lab notebook](saving.html#notebook)
   - [Be careful with serialization](saving.html#serialization)
 - [Adding metadata](metadata.html)
   - [To the lab](metadata.html#lab)

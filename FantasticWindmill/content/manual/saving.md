@@ -12,6 +12,7 @@ In this section, you will learn to use the following features:
 - [Load a lab](#loading)
 - [Merge labs](#merging)
 - [Preload a lab with results stored internally](#preloading)
+- [Export a lab notebook](#notebook)
 - [Be careful with serialization](#serialization)
 
 ## <a name="saving">Saving a lab</a>
@@ -19,6 +20,16 @@ In this section, you will learn to use the following features:
 Saving the current state of a lab can be done by going to the *Status* page and clicking on the button *Save lab data*. Your web browser will prompt you to select a location on your computer where the file can be saved, as with any fil you download from the web. By default, the file's name matches the one given to the lab (using the [`setTitle`](doc/ca/uqac/lif/labpal/Laboratory.html#setTitle-java.lang.String-) method.
 
 By convention, a LabPal save file has the extension `.labo`. For each experiment, this file saves all of its input parameters, the output parameters it generated (if any), as well as its current status (finished or not). If any experiment is running at the time the lab is saved, it will be saved into the file as Ready (i.e. not executed). LabPal cannot save and restore experiments that are in the middle of their execution.
+
+### What's in a `.labo` file?
+
+That file is simply a ZIP archive with a different file extension. As a matter of fact, if you rename a file like `mylab.labo` into `mylab.zip`, you should be able to open it with any software that handles ZIP files.
+
+The contents of the archive is a single other file, in the [JSON](http://json.org/) format. Among other things, you can find in this file every input/output parameter of every experiment in the lab, as well as additional metadata such as experiments' start/stop time, status, etc.
+
+Since this file is a plain JSON document, it is easily amenable to external processing by scripts or software other than LabPal. By loading this file into a JSON parser in the language of your choice, you should be able to extract any data inside the lab with little effort. This way, your lab results are not "trapped" inside LabPal and can be used elsewhere.
+
+While this file can be *read* and reused externally, it is not recommended to *edit* this file and try to reload it in LabPal. Any changes in the structure or the type of some of its fields may result in LabPal refusing to read it again.
 
 ## <a name="loading">Loading a lab</a>
 
@@ -81,6 +92,16 @@ This way, it is not necessary to ship a separate file containing the lab's exper
 By default, LabPal will look for every `.labo` file that is found in the folder; if multiple such files are found, they will be all merged together at startup. Look out for old files that are no longer in use, as they could mess up with your data or event prevent it from being loaded (see below).
 
 If you call `--preload` and no file is found, a message will be displayed at the command line and LabPal will start with an empty lab instead.
+
+## <a name="notebook">Export a lab notebook</a>
+
+Suppose you want to show your experimental results (plots, tables, or individual values) to another person, without requiring this person to download and start your lab with the [`--preload` feature](#preloading). You can do this by creating a **lab notebook**.  To create a notebook, go to the *Status* page in the web interface and click on the "Save notebook" button. The generation of the notebook can take a few seconds, depending on the size of your lab, so please be patient.
+
+A notebook is a ZIP archive, with the contents of all the pages in the web interface, saved as static HTML files. A person that receives such a notebook can unzip the file, open `index.html` in a web browser, and from then on, navigate a static version of your lab's web interface. Most buttons in this interface still work: for example, clicking on the *Plots* button will take you to the Plots page, showing all the plots in the state they were when the notebook was created. The same is true of the *Experiments*, *Tables* and *Macros* pages: a user can still click on individual experiments or tables, and see their contents. This way, it is possible to save and pass around a "read-only" version of the web interface.
+
+Since the notebook is just a folder of static images and HTML files, it can also be uploaded to a web server. However, since no lab is running, some of LabPal features obviously don't work: experiments cannot be sent to the lab assistant, and the [data provenance](provenance.html) features are not accessible. In the web interface, buttons that do not work within a notebook are greyed out and have no effect when clicked. The web interface also displays a message on each page, reminding users that they are not running an actual lab, but are merely looking at a static snapshot that was generated beforehand.
+
+The lab notebook feature is intended for *viewing* results by a person. If your goal is to export the lab's data to process it externally, you should rather consider using the `.labo` save file, or export tables as CSV text files (both features are available in LabPal).
 
 ## <a name="serialization">Be careful with serialization</a>
 
