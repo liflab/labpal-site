@@ -65,3 +65,4 @@ This is the table of contents of the LabPal user manual. In addition to this man
   - [Passing command-line parameters](other.html#cli)
   - [Customizing the web console](other.html#custom-ui)
   - [Checking the environment](other.html#environment)
+  - [Creating a lab in Python](other.html#python)

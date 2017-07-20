@@ -5,6 +5,7 @@
 - [Passing command-line parameters](#cli)
 - [Customizing the web console](#custom-ui)
 - [Checking the environment](#environment)
+- [Creating a lab in Python](#python)
 
 ## <a name="cli">Passing command-line parameters</a>
 
@@ -90,5 +91,11 @@ It is possible to verify these conditions at startup by adding to the lab a meth
 An error is detected by checking that the exit code is different from 0. (See [CommandRunner](/doc/ca/uqac/lif/labpal/CommandRunner.html).)
 
 You must return null if everything is OK. As a rule, returning a non-null value (typically an error message) means that something *external* to the lab must be fixed before running the experiments; hence LabPal will simply quit. If your experiments have [prerequisites](experiments.html#prerequisites) they can generate by themselves, don't use this method.
+
+## <a name="python">Creating a lab in Python</a>
+
+LabPal is implemented as a Java library, and is especially suited for labs and experiments written as Java classes. However, it is also possible to write experiments and labs using **Python**, thanks to the [Jython](http://www.jython.org/) library.
+
+To this end, you can use our [template project](https://github.com/liflab/labpal-jython-project), which contains a Python lab and a Python experiment class.  Please refer to that project's `README` file for more information on how to create a lab in Python.
 
 <!-- :wrap=soft:mode=markdown: -->

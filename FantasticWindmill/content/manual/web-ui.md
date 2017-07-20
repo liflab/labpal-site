@@ -176,12 +176,15 @@ As an example, suppose you have a compiled lab, called `my-lab.jar`, that you wi
 
     $ java -jar my-lab.jar
     
-    LabPal 2.5
+    LabPal 2.9 - A versatile environment for running experiments
     (C) 2014-2017 Laboratoire d'informatique formelle
     Université du Québec à Chicoutimi, Canada
-    Visit http://localhost:21212/index in your browser
+    Please visit http://localhost:21212/index to run this lab
+    Hit Ctrl+C in this window to stop
 
 However, at this point, you open your *local* web browser, and type the URL `http://1.2.3.4:21212/index`. This will open the web console of the remote instance of LabPal. From this point on, you can use LabPal as usual; however, all the experiments will actually run on machine 1.2.3.4, not on your local machine.
+
+This process can be further extended, and you can setup multiple lab instances to automatically synchronize their results with your local machine, among other things. Please refer to the section [Running LabPal on multiple machines](multiple-machines.html).
 
 ## <a name="port">Changing the server port</a>
 
