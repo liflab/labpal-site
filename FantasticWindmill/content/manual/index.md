@@ -20,6 +20,7 @@ This is the table of contents of the LabPal user manual. In addition to this man
   - [The elements of the web console](web-ui.html#elements)
   - [Running a lab on a remote machine](web-ui.html#remote)
   - [Changing the server port](web-ui.html#port)
+  - [Changing the color scheme](multiple-machines.html#color-scheme)
 - [Using the text console](text-ui.html)
 - [Experiments: advanced features](experiments.html)
   - [Use multiple types of experiments in the same lab](experiments.html#multiple)

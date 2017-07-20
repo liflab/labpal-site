@@ -11,6 +11,7 @@ In this section, you will learn the following features:
 - [The elements of the web console](#elements)
 - [Running a lab on a remote machine](#remote)
 - [Changing the server port](#port)
+- [Changing the color scheme](multiple-machines.html#color-scheme)
 
 ## <a name="usage">Typical usage of the web console</a>
 
@@ -194,6 +195,14 @@ If LabPal (or some other process) is already using the intended port, the lab wo
 
 Look out in particular when trying to use ports 80 or 8080, as these ports are frequently already in use by a web server that runs on the host machine (such as Apache or IIS).
 
-Changing the port also means that you can run multiple instances of LabPal at the same time, by giving them a different TCP port at startup.
+Changing the port also means that you can run multiple instances of LabPal at the same time on the same machine, by giving them a different TCP port at startup.
+
+## <a name="color-scheme">Changing the color scheme</a>
+
+If you run multiple instances of LabPal at the same time, it may become confusing to control them side by side in multiple browser windows. The browser's address bar will show a different host/port for each lab instance, but it is possible to get a more explicit visual cue by changing the color of the web console. This is done by using the command-line option `--color-scheme`. For example, to start a web console by replacing the blueish GUI by a pink one, you start it like this:
+
+    $ java -jar my-lab.jar --color-scheme 2
+
+The value for `--color-scheme` determines what background color is used to display the interface. Any positive integer is accepted, although LabPal only has a handful of distinct color schemes to offer. This is why different numbers may lead to the same color.
 
 <!-- :wrap=soft:mode=markdown: -->
