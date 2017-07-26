@@ -13,10 +13,11 @@
     <a class="sidebar-nav-item" href="/">Home</a>
     <a class="sidebar-nav-item" href="/manual/quick-tutorial.html">Quick tutorial</a>
     <a class="sidebar-nav-item" href="/videos.html">Videos</a>
-    <a class="sidebar-nav-item" href="/manual/index.html">User manual</a>
+    <a class="sidebar-nav-item" href="https://www.gitbook.com/read/book/liflab/labpal-user-manual">User manual</a>
+    <a class="sidebar-nav-item" href="/manual/index.html">Resources and documentation</a>
     <a class="sidebar-nav-item" href="https://github.com/liflab/labpal/releases/latest">Download</a>
     <a class="sidebar-nav-item" href="https://github.com/liflab/labpal">GitHub project</a>
-    <span class="sidebar-nav-item">Currently v2.9</span>
+    <span class="sidebar-nav-item">Currently v2.8</span>
   </nav>
 
   <div class="sidebar-item">
